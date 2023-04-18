@@ -1,0 +1,89 @@
+{% load static %}
+{% include 'base/base.html' %}
+    <style>
+        
+        body {
+            background: url("{% static 'images/bg.jpg' %}");
+            background-position: center;
+            background-size: cover;
+        }
+
+        .form {
+            background-color: #0A2647;
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+
+        }
+        .form button{
+            color:white;
+        }
+
+        input::placeholder {
+            color: #000 !important;
+        }
+
+        input:focus {
+            background-color: #E94560 !important;
+            transition: .6s;
+            color: #fff !important;
+        }
+    </style>
+
+<body>
+    {% include 'base/alerts.html' %}
+
+    {% if is_added == True  %}
+    <form method="post" style="display: none;">
+    
+    {% else %}
+    <form method="post" >
+    
+    {% endif %}
+            {% csrf_token %}
+
+    <div class="overlay"> 
+        <div class="container">
+            <div class="row justify-content-center align-items-ءcenter vh-100">
+                <div class="form w-50 m-auto  p-2 rounded shadow">
+                    <span id="error"></span>
+                    <div class="form-caption text-center py-2">
+                        <img style="width: 3rem;" src="{% static 'images/icon.png' %}" alt="">
+                    </div>
+                        <input type="text" name="fname"  placeholder="Enter Your Firstname ..."
+                        class=" form-control my-4">
+                        <input type="text" name="lname"  placeholder="Enter Your last name ..."
+                        class=" form-control my-4">
+                    <input type="text" name="adress"  placeholder="Enter Your Adress ..."
+                    class=" form-control my-4">
+                    <input type="text" name="adress2"  placeholder="Enter Your Adress 2 ..."
+                    class=" form-control my-4">
+                    <input type="text" name="city"  placeholder="Enter Your city ..."
+                    class=" form-control my-4">
+                    <input type="text" name="state"  placeholder="Enter Your state ..."
+                    class=" form-control my-4">
+                    <input type="text" name="zip"  placeholder="Enter Your zip code ..."
+                    class=" form-control my-4">
+
+                    <input type="email" name="email"  placeholder="Enter Your Email ..."
+                    class=" form-control my-4">
+                    <input type="text" name="username"  placeholder="Enter Your username ..."
+                    class=" form-control my-4">
+                    <input type="password" name="password"  placeholder="Enter Your password ..."
+                    class=" form-control my-4">
+                    <label  style="color: white; margin:10px;">     
+                    <input type="checkbox" name="terms"  />
+                               I agree to the terms of use and privacy policy</label> 
+                               <div class="confirm d-flex justify-content-between align-items-center">                 
+                    <button type="submit"   class="btn btn-danger" name="btn-signup" > Submit </button>
+                  
+                        <a href="{% url 'signin' %}" class="btn btn-danger" name="btn_login"  > Sign in</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+                </form>
+            
+</body>
+
+</html>
